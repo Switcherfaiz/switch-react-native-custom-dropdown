@@ -35,7 +35,7 @@ return(
 
 const styles=StyleSheet.create({
     drop_styles:{
-        color:'white,
+        color:'white',
         width:'100%',
         fontFamily:'Inter-Regular',
         fontSize:3.5,
