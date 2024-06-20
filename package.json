@@ -1,0 +1,34 @@
+{
+  "name": "switch-react-native-custom-dropdown",
+  "version": "1.0.3",
+  "description": "react native dropdown list component made by Switcher.faiz",
+  "main": "CustomDropdown.js",
+  "scripts": {
+    "build": "babel src --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Switcherfaiz/switch-react-native-custom-dropdown.git"
+  },
+  "keywords": [
+    "dropdown",
+    "switch-react-native-dropdown",
+    "expo",
+    "dropdown"
+  ],
+  "author": "Switcher.faiz",
+  "bugs": {
+    "url": "https://github.com/Switcherfaiz/switch-react-native-custom-dropdown/issues"
+  },
+  "homepage": "https://github.com/Switcherfaiz/switch-react-native-custom-dropdown#readme",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13"
+  }
+}
