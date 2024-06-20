@@ -21,7 +21,7 @@ const mydrop_data=[
     {'id':'11','value':'Third'},
 ];
 
-const App(){
+export default function App(){
     const dropRefference=useRef();
     console.log(dropRefference.current.getvalue());
     console.log(dropRefference.current.getkey());
@@ -32,7 +32,6 @@ return(
 )
 }
 
-export default App
 
 const styles=StyleSheet.create({
     drop_styles:{
