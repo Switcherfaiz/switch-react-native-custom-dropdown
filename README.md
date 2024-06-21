@@ -11,8 +11,9 @@ npm install switch-react-native-custom-dropdown
 # Usage
 ```bash
 import React, { useRef } from 'react';
-import { View, StyleSheet } from 'react-native';
-import CustomDropdown from 'custom-dropdown';
+import { View, StyleSheet,Pressable,Text } from 'react-native';
+import CustomDropdown from 'switch-react-native-custom-dropdown';
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const mydrop_data=[
     {'id':'12','value':'Select equipment'},
@@ -23,12 +24,23 @@ const mydrop_data=[
 
 export default function App(){
     const dropRefference=useRef();
-    console.log(dropRefference.current.getvalue());
-    console.log(dropRefference.current.getkey());
+    const sendValues=()=>{
+      console.log(dropRefference.current.getvalue());
+      console.log(dropRefference.current.getkey());
+    }
 
 return(
-        <CustomDropdown ref={dropRefference} parent_scroll_enabled={false} drop_scrollbar_hidden={false} drop_styles={styles.drop_styles} drop_items={mydrop_data} drop_selected={1}>Update</CustomDropdown>
+        
+<SafeAreaView style={{flex:1}}>
 
+<CustomDropdown ref={dropRefference} parent_scroll_enabled={false} drop_scrollbar_hidden={false} drop_styles={styles.drop_styles} drop_items={mydrop_data} drop_selected={1} onChange={()=>{
+  console.log('changed')
+}}>Update</CustomDropdown>
+
+<Pressable onPress={sendValues}><Text>Get value</Text></Pressable>
+
+
+</SafeAreaView>
 )
 }
 
@@ -36,7 +48,7 @@ return(
 const styles=StyleSheet.create({
     drop_styles:{
         color:'white',
-        width:'100%',
+        width:200,
         fontFamily:'Inter-Regular',
         fontSize:3.5,
         height:45,
@@ -51,6 +63,7 @@ const styles=StyleSheet.create({
             alignItems:'center',
             justifyContent:'space-between',
             color:'white',
+            backgroundColor:'black',
             paddingHorizontal:5,
             borderColor:'white',
             borderWidth:1,
@@ -59,7 +72,6 @@ const styles=StyleSheet.create({
         ItemStyle:{
             paddingVertical:10,
             paddingHorizontal:5,
-            paddingHorizontal:4,
             borderRadius:10
         },
     },
@@ -95,6 +107,7 @@ ItemSelectedStyle:{
             alignItems:'center',
             justifyContent:'space-between',
             color:'white',
+            backgroundColor:'black',
             paddingHorizontal:5,
             borderColor:'white',
             borderWidth:1,
@@ -115,9 +128,15 @@ ItemStyle:{
 
 ```bash
 const dropRefference=useRef();
-    console.log(dropRefference.current.getvalue());
-    console.log(dropRefference.current.getkey());
+    const sendValues=()=>{
+      console.log(dropRefference.current.getvalue());
+      console.log(dropRefference.current.getkey());
+    }
 
-<CustomDropdown ref={dropRefference} parent_scroll_enabled={false} drop_scrollbar_hidden={false} drop_styles={styles.drop_styles} drop_items={mydrop_data} drop_selected={1}>Update</CustomDropdown>
+<CustomDropdown ref={dropRefference} parent_scroll_enabled={false} drop_scrollbar_hidden={false} drop_styles={styles.drop_styles} drop_items={mydrop_data} drop_selected={1} onChange={()=>{
+  console.log('changed')
+}}>Update</CustomDropdown>
+
+<Pressable onPress={sendValues}><Text>Get value</Text></Pressable>
 ```
 
