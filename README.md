@@ -139,4 +139,11 @@ const dropRefference=useRef();
 
 <Pressable onPress={sendValues}><Text>Get value</Text></Pressable>
 ```
-
+# Get dropdown value when onChange fired ,using key and value parameters respectively or ref also
+```bash
+<CustomDropdown ref={dropRefference} parent_scroll_enabled={false} drop_scrollbar_hidden={false} drop_styles={styles.drop_styles} drop_items={mydrop_data} drop_selected={1} onChange={(key,value)=>{
+  console.log(key,value);
+  console.log(dropRefference.current.getvalue());
+  console.log(dropRefference.current.getkey());
+}}>Update</CustomDropdown>
+```

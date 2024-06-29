@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView, Pressable } from 'react-native'
-import React, { useState,forwardRef,useImperativeHandle } from 'react'
-import { Switch_icons } from './assets/Switch_icons/switch_icons';
+import React, { useState,forwardRef,useImperativeHandle, useEffect, useRef } from 'react'
+import { Switch_icons } from '../assets/Switch_icons/switch_icons';
 
 
 const CustomDropdown = forwardRef(({drop_items,drop_styles,drop_selected,drop_scrollbar_hidden,onChange},ref) => {
@@ -10,6 +10,7 @@ const CustomDropdown = forwardRef(({drop_items,drop_styles,drop_selected,drop_sc
   const [key,set_key]=useState(drop_items[selected_index_intro].id);
   const [value,set_value]=useState(drop_items[selected_index_intro].value);
   
+  const initial_render=useRef(true);
   useImperativeHandle(ref,()=>({
     getvalue:()=>{
       return value;
@@ -19,7 +20,19 @@ const CustomDropdown = forwardRef(({drop_items,drop_styles,drop_selected,drop_sc
     },
   }))
 
+  useEffect(()=>{
+    if(initial_render.current)
+      {
+        initial_render.current=false;
+      }
+    else if(onChange)
+      {
+        onChange(key,value);
+      }
+  },[key,value])
+
   return (
+    
     // Whole drop down
     <View style={[styles.overridden_drop_styles,{width:drop_styles.width}]}>
 
@@ -48,7 +61,8 @@ const CustomDropdown = forwardRef(({drop_items,drop_styles,drop_selected,drop_sc
               set_key(item.id);
               set_selected_index(index);
               set_drop_reveal(false);
-              onChange&&onChange();
+              
+            
             }}
             style={[styles.cont_items_style,drop_styles.ItemStyle]} key={index}>
               <Text style={[styles.drop_item,{color:drop_styles.color}]} numberOfLines={1} ellipsizeMode='tail'>{item.value}</Text>
